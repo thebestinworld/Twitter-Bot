@@ -6,13 +6,13 @@ import com.twitterbot.repository.TweetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import twitter4j.TwitterException;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class TweetDataController {
@@ -26,5 +26,15 @@ public class TweetDataController {
         this.tweetRepository.saveAndFlush(tweet);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+    @GetMapping("/getTweets")
+    public ResponseEntity getTweets(){
+
+        List<Tweet> tweets = tweetRepository.findAll();
+        return ResponseEntity.ok(tweets);
+
+    }
+
+
 
 }

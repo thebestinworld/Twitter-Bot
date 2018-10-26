@@ -22,7 +22,7 @@ $(document).ready(
                 dataType: 'json',
                 success: function (result) {
                     console.log(result);
-                    window.location = "/";
+                    window.location = "/database";
                 },
                 error: function (e) {
                     alert("Error!");
