@@ -30,7 +30,7 @@ public class TweetDataController {
     @GetMapping("/getTweets")
     public ResponseEntity getTweets(){
 
-        List<Tweet> tweets = tweetRepository.findAll();
+        List<Tweet> tweets = tweetRepository.findAllByOrderByIdAsc();
         return ResponseEntity.ok(tweets);
 
     }

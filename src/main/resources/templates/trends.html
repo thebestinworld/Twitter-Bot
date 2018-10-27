@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Tables</title>
+    <title>SB Admin - Blank Page</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,8 +38,7 @@
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
-                   aria-describedby="basic-addon2">
+            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                     <i class="fas fa-search"></i>
@@ -57,14 +56,14 @@
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-        <li class="nav-item ">
+        <li class="nav-item active">
             <a class="nav-link" href="/">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-item active">
-            <a class="nav-link " href="/database">
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="/database">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Tweets DataBase</span>
             </a>
@@ -90,40 +89,19 @@
                 <li class="breadcrumb-item">
                     <a href="/">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Tables</li>
+                <li class="breadcrumb-item active">Trending Tweets</li>
             </ol>
 
-            <!-- DataTables Example -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Data Table Example
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Content</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Content</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                            </tfoot>
+            <!-- Page Content -->
+            <h1>Trending Tweets</h1>
+            <hr>
 
-                        </table>
-                    </div>
+            <th:block th:each="trend : ${trends}">
+                <div class="col-md-12" align="center">
+                    <p  th:text="${trend}"></p>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            </div>
+            </th:block>
+
         </div>
         <!-- /.container-fluid -->
 
@@ -142,10 +120,8 @@
 </div>
 <!-- /#wrapper -->
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+
+
 
 
 <!-- Bootstrap core JavaScript-->
@@ -155,17 +131,8 @@
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Page level plugin JavaScript-->
-<script src="vendor/datatables/jquery.dataTables.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin.min.js"></script>
-
-<!-- Demo scripts for this page-->
-
-
-<script src="getTweets.js"></script>
 
 </body>
 
