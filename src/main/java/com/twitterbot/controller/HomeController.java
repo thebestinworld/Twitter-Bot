@@ -20,19 +20,4 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/create")
-    public String create(){
-
-        return "create";
-    }
-
-    @GetMapping("/database")
-    public String database(){
-        return "tweetsDatabase";
-    }
-
-
-
-
-
 }

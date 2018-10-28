@@ -16,7 +16,7 @@ $(document).ready(
         function getStats() {
             $.ajax({
                 type: "GET",
-                url: "getTweetCount",
+                url: "getStats",
                 success: function (result) {
 
 

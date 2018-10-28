@@ -10,14 +10,13 @@ public class Tweet {
     private Integer id;
     private String content;
 
-    public Tweet(){
+    public Tweet() {
 
     }
 
     public Tweet(String content) {
         this.content = content;
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,7 @@ public class Tweet {
         this.id = id;
     }
 
-    @Column(columnDefinition = "text" ,name = "content",nullable = false)
+    @Column(columnDefinition = "text", name = "content", nullable = false)
     public String getContent() {
         return content;
     }

@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>SB Admin - Register</title>
+
+    <title>Edit Tweet</title>
 
     <!-- Bootstrap core CSS-->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,11 +21,12 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Edit Tweet</div>
         <div class="card-body">
-            <form id="addTweet" th:action="@{/edit/{id}(id=${tweet.id})}" method="POST">
+            <form th:action="@{/edit/{id}(id=${tweet.id})}" method="POST">
                 <div class="form-group">
                     <label class="col-sm-4 control-label" for="content">Content</label>
                     <div class="col-lg-12">
-                        <textarea th:text="${tweet.content}" class="form-control" rows="6" id="content" name="content"></textarea>
+                        <textarea th:text="${tweet.content}" class="form-control" rows="6" id="content"
+                                  name="content"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Edit</button>

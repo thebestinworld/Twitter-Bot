@@ -1,6 +1,7 @@
 package com.twitterbot.service;
 
-import com.twitterbot.configuration.TwitterConfiguration;
+import com.twitterbot.config.TwitterConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import twitter4j.*;
 
@@ -11,43 +12,39 @@ import java.util.List;
 public class TwitterService {
 
     private final TwitterConfiguration twitterConfiguration;
+    private final Twitter twitter;
 
-
+    @Autowired
     public TwitterService(TwitterConfiguration twitterConfiguration) {
         this.twitterConfiguration = twitterConfiguration;
+        this.twitter = this.twitterConfiguration.getTwitter();
     }
+
 
     public void tweet(String content) throws TwitterException {
-        Twitter twitter = twitterConfiguration.getTwitter();
-        twitter.updateStatus(content);
+        this.twitter.updateStatus(content);
     }
 
-    public String getLatestTweet() throws TwitterException {
-        Twitter twitter = twitterConfiguration.getTwitter();
-
-        List<Status> statuses = twitter.getHomeTimeline();
+    public String getLastTweet() throws TwitterException {
+        List<Status> statuses = this.twitter.getHomeTimeline();
 
         return statuses.get(0).getText();
     }
 
     public int getTweetsCount() throws TwitterException {
-        Twitter twitter = twitterConfiguration.getTwitter();
-        User user = twitter.showUser("RandomProfileBG");
-
+        User user = this.twitter.showUser("RandomProfileBG");
 
         return user.getStatusesCount();
     }
 
     public int getFollowersCount() throws TwitterException {
-        Twitter twitter = twitterConfiguration.getTwitter();
-        User user = twitter.showUser("RandomProfileBG");
+        User user = this.twitter.showUser("RandomProfileBG");
 
         return user.getFollowersCount();
     }
 
     public List<String> getTrendingTweets() throws TwitterException {
-        Twitter twitter = twitterConfiguration.getTwitter();
-        Trends trends = twitter.getPlaceTrends(	23424977);
+        Trends trends = this.twitter.getPlaceTrends(23424977);//USA Trending Tweets
         List<String> trendNames = new ArrayList<>();
         int count = 0;
         for (Trend trend : trends.getTrends()) {
@@ -56,6 +53,7 @@ public class TwitterService {
                 count++;
             }
         }
+
         return trendNames;
     }
 }
