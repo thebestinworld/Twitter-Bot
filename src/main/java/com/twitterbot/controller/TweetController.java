@@ -120,6 +120,14 @@ public class TweetController {
         return model;
     }
 
+    @GetMapping("/search")
+    public ModelAndView searchTweet(TweetDTO tweetDTO) throws TwitterException {
+        List<String> result = twitterService.searchTweet(tweetDTO.getContent());
+        ModelAndView model = new ModelAndView("search");
+        model.addObject("result",result);
+        return  model;
+    }
+
 
     @Scheduled(fixedRate=60*60*1000, initialDelay=10*60*1000)
     public void tweetFromDatabase() throws TwitterException {

@@ -56,4 +56,21 @@ public class TwitterService {
 
         return trendNames;
     }
+
+
+    public List<String> searchTweet(String string) throws TwitterException {
+        Query query = new Query(string);
+        QueryResult result;
+        result = this.twitter.search(query);
+        List<Status> tweets = result.getTweets();
+        List<String> searchResult = new ArrayList<>();
+        int count = 0;
+        for (Status status : tweets) {
+            if (count < 10) {
+                searchResult.add(status.getText());
+                count++;
+            }
+        }
+        return searchResult;
+    }
 }

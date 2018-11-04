@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Trending Tweets</title>
+    <title>Search Result</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -81,12 +81,12 @@
                 <li class="breadcrumb-item active">Trending Tweets</li>
             </ol>
 
-            <h1>Trending Tweets</h1>
+            <h1>Search Result</h1>
             <hr>
 
-            <th:block th:each="trend : ${trends}">
+            <th:block th:each="text : ${result}">
                 <div class="col-md-12" align="center">
-                    <p  th:text="${trend}"></p>
+                    <p  th:text="${text}"></p>
                 </div>
             </th:block>
 
