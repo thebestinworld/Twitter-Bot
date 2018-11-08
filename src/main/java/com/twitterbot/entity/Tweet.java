@@ -6,8 +6,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tweets")
 public class Tweet {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(columnDefinition = "text", name = "content", nullable = false,length = 280)
     private String content;
 
     public Tweet() {
@@ -18,8 +21,7 @@ public class Tweet {
         this.content = content;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public Integer getId() {
         return id;
     }
@@ -28,7 +30,6 @@ public class Tweet {
         this.id = id;
     }
 
-    @Column(columnDefinition = "text", name = "content", nullable = false)
     public String getContent() {
         return content;
     }
