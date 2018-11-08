@@ -59,7 +59,9 @@ public class TwitterService {
 
 
     public List<String> searchTweet(String string) throws TwitterException {
-        Query query = new Query(string);
+        Query query = new Query();
+        query.setLang("en");
+        query.setQuery(string + " -filter:retweets");
         QueryResult result;
         result = this.twitter.search(query);
         List<Status> tweets = result.getTweets();
