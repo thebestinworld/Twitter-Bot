@@ -9,7 +9,7 @@
 <li>Post and retrieve tweets</li>
 <li>Posting tweets on certain intervals</li>
 <li>Save tweets to database</li>
-<li>Shpw trending tweets and search for tweets</li>
+<li>Show trending tweets and search for tweets</li>
 </ul>
 
 #Install and run
